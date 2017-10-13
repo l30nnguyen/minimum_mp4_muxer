@@ -13,7 +13,7 @@ TEST_FILES  = $(shell find $(TESTDIR) -name *.c)
 APP_OBJS    = $(patsubst %.c, %.o, $(TEST_FILES))
 
 CFLAGS      = -Wall -I$(INCDIR) -O2 -fvisibility=hidden
-TARGET      = mp4rec
+TARGET      = mmp4m
 
 .PHONY: shared test
 
@@ -23,7 +23,6 @@ shared: $(LIB_OBJS)
 
 test: $(APP_OBJS) $(LIB_OBJS)
 	$(CC) -o $(TARGET) $(APP_OBJS) $(LIB_OBJS)
-	cp $(TARGET) output/
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(CPP_FLAG) -c $< -o $@
